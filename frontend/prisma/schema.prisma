@@ -16,8 +16,20 @@ model incedents {
   planned                Boolean
   description            String
   additional_information String?
+  service                service  @relation(fields: [serviceId], references: [id])
 
   createdAt DateTime @default(now())
+  serviceId Int
 
   @@index([id])
+}
+
+model service {
+  id    Int    @id @default(autoincrement())
+  name  String
+  token String
+
+  incedents incedents[]
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
 }
