@@ -1,0 +1,9 @@
+services:
+  poms_db:
+    image: postgres:16.2-alpine
+    environment:
+      - POSTGRES_USER=poms
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_DB=poms
+    ports:
+      - 5432:5432

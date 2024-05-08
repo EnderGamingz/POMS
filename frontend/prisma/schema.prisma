@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model incedents {
+  id                     Int      @id @default(autoincrement())
+  location               String
+  area_codes             Json
+  start_time             DateTime
+  end_time               DateTime
+  planned                Boolean
+  description            String
+  additional_information String?
+
+  createdAt DateTime @default(now())
+
+  @@index([id])
+}

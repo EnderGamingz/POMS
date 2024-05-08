@@ -1,0 +1,38 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": false,
+  "repository": {
+    "url": "https://github.com/EnderGamingz/POMS",
+    "license": "BSD-3-Clause"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "db:generate": "prisma migrate deploy",
+    "build": "prisma generate && next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@prisma/adapter-pg": "^5.13.0",
+    "@prisma/client": "^5.13.0",
+    "classnames": "^2.5.1",
+    "next": "^14.2.3",
+    "pg": "^8.11.5",
+    "prisma": "^5.13.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.11",
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.0",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.3",
+    "postcss": "^8.4.38",
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.14",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.4.5"
+  }
+}
