@@ -7,29 +7,31 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model incedents {
-  id                     Int      @id @default(autoincrement())
-  location               String
-  area_codes             Json
+model incidents {
+  id                     Int       @id @default(autoincrement())
+  location               String[]
+  area_codes             Int[]
   start_time             DateTime
-  end_time               DateTime
+  end_time               DateTime?
   planned                Boolean
   description            String
   additional_information String?
-  service                service  @relation(fields: [serviceId], references: [id])
+  affected_customers     Int?
+  service                service   @relation(fields: [serviceId], references: [id])
+  serviceId              Int
+  active                 Boolean   @default(true)
 
   createdAt DateTime @default(now())
-  serviceId Int
 
   @@index([id])
 }
 
 model service {
-  id    Int    @id @default(autoincrement())
-  name  String
-  token String
+  id        Int         @id @default(autoincrement())
+  name      String
+  token     String      @unique
+  incidents incidents[]
 
-  incedents incedents[]
-  createdAt DateTime    @default(now())
-  updatedAt DateTime    @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

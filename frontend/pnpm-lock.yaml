@@ -23,9 +23,6 @@ importers:
       pg:
         specifier: ^8.11.5
         version: 8.11.5
-      prisma:
-        specifier: ^5.13.0
-        version: 5.13.0
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -57,6 +54,9 @@ importers:
       prettier-plugin-tailwindcss:
         specifier: ^0.5.14
         version: 0.5.14(prettier@3.2.5)
+      prisma:
+        specifier: ^5.13.0
+        version: 5.13.0
       tailwindcss:
         specifier: ^3.4.1
         version: 3.4.3
