@@ -13,7 +13,7 @@ export function verifyConfig(envs: ServiceEnv[]): string[] {
     const v = envs[i];
     if (!v.value) {
       console.error(red("Environment Error:"), v.name, red("is missing"));
-      // noinspection TypeScriptUnresolvedReference
+      // @ts-ignore
       return process.exit(1);
     } else {
       console.log(green("Environment:"), v.name, green("is set to"), v.value);

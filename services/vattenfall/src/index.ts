@@ -2,10 +2,8 @@ import dotenv from 'dotenv';
 import axios from 'axios';
 import { ServiceEnv, verifyConfig } from '../../shared/verifyConfig';
 import cron from 'node-cron';
-import {
-  ServiceDataRequestBody,
-  ServiceIncident,
-} from '@globalTypes/ServiceDataRequest';
+import { ServiceIncident } from '@globalTypes/ServiceDataRequest';
+import { sendServiceData } from '../../shared/sendServiceData';
 
 dotenv.config();
 
@@ -31,29 +29,6 @@ async function fetchData() {
     console.error('Error while fetching data:', err);
     throw new Error(err);
   }
-}
-
-async function sendData(data: ServiceIncident[]) {
-  await axios
-    .post(ENDPOINT_URL, {
-      token: SERVICE_TOKEN,
-      incidents: data,
-    } satisfies ServiceDataRequestBody)
-    .then(() => {
-      console.log(
-        'Successfully reported',
-        data.length,
-        'incidents at',
-        new Date().toISOString(),
-      );
-    })
-    .catch(err => {
-      console.error(
-        'Error while reporting data at',
-        `${new Date().toISOString()}:`,
-        err.message,
-      );
-    });
 }
 
 cron.schedule(FETCH_INTERVALL, () => {
@@ -94,7 +69,12 @@ cron.schedule(FETCH_INTERVALL, () => {
     );
 
     if (!!transformedData.length) {
-      await sendData(transformedData);
+      await sendServiceData(
+        axios,
+        SERVICE_TOKEN,
+        ENDPOINT_URL,
+        transformedData,
+      );
     }
   });
 });
