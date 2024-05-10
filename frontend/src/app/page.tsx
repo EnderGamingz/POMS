@@ -1,7 +1,7 @@
 import client from '@prisma/prismadb';
 
 export default async function Home() {
-  const value = await client.incedents.findMany();
+  const value = await client.incidents.findMany();
 
   return (
     <div>
