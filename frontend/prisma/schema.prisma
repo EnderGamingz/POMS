@@ -38,13 +38,13 @@ model service {
 
 model role {
   id   Int    @id @default(autoincrement())
-  name String
+  name String @unique
   user user[]
 }
 
 model user {
   id     Int    @id @default(autoincrement())
-  name   String
+  name   String @unique
   secret String
   role   role   @relation(fields: [roleId], references: [id])
   roleId Int
