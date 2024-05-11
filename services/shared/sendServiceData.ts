@@ -3,6 +3,13 @@ import {
   ServiceIncident,
 } from "../../types/ServiceDataRequest";
 
+/**
+ * Sends incident data to specified recv endpoint using axios
+ * @param axios axios instance
+ * @param token service token
+ * @param endpoint recv endpoint
+ * @param data incident data
+ */
 export async function sendServiceData(
   axios: any,
   token: string,
