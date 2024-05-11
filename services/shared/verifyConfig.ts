@@ -8,9 +8,18 @@ function green(text: string) {
 
 export type ServiceEnv = { name: string; value?: string };
 
+/**
+ * Verify the service ENV vars, exits on missing ENV var. 
+ * @param envs 
+ * @returns map of environmet variables
+ */
 export function verifyConfig(envs: ServiceEnv[]): string[] {
+
+  // loop through the envs
   for (let i = 0; i < envs.length; i++) {
     const v = envs[i];
+
+    // exits if the env var is missing.  
     if (!v.value) {
       console.error(red("Environment Error:"), v.name, red("is missing"));
       // @ts-ignore
@@ -20,5 +29,6 @@ export function verifyConfig(envs: ServiceEnv[]): string[] {
     }
   }
 
+  // @ts-ignore
   return envs.map((env) => env.value);
 }
