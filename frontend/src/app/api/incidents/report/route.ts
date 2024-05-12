@@ -34,6 +34,10 @@ export async function POST(request: Request) {
     },
   });
 
+  await client.outageDataCollectionLog.create({data: {
+    info: `Received data about ${req.incidents.length} incidents`,
+    serviceId: service.id
+  }})
 
   return Response.json({ success: true });
 }
