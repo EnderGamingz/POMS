@@ -15,7 +15,7 @@ export async function getSessionData() {
 export async function ensureLoggedIn() {
   const session = await getSessionData();
   // @ts-ignore
-  if (!session.user_id) redirect('/login');
+  if (!session.user_id) redirect('/auth/login');
   return true;
 }
 

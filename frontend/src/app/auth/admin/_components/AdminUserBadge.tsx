@@ -2,33 +2,31 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 'use client';
-import { user } from '@prisma/client';
 import { useState } from 'react';
 import AdminUserMenu from './AdminUserMenu';
 
-interface IUser {
-  username: String | undefined;
-  id: Number | undefined;
-  role_id: Number | undefined;
-}
+export type User = {
+  id: number;
+  name: string;
+  secret: string;
+  roleId: number;
+} | null;
 
-export default function AdminUserBadge(user: IUser) {
+export default function AdminUserBadge({ user }: { user: User }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  if (!user) return null;
+
   return (
-    <>
-      <div>
-        <p
-          className='user-badge rounded-md border-2 border-green-300 bg-green-700 px-2 py-1 text-green-300 hover:cursor-pointer'
-          onClick={() => setMenuOpen(!menuOpen)}>
-          {user.username}
-        </p>
-        {menuOpen && (
-          <div>
-            <AdminUserMenu />
-          </div>
-        )}
-      </div>
-    </>
+    <div>
+      <button
+        className={
+          'user-badge rounded-md border-2 border-green-600 bg-green-400 px-3 py-1 text-green-800'
+        }
+        onClick={() => setMenuOpen(!menuOpen)}>
+        {user.name}
+      </button>
+      {menuOpen && <AdminUserMenu />}
+    </div>
   );
 }
