@@ -2,18 +2,21 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 'use client';
-import { user } from '@prisma/client';
 import { useState } from 'react';
 import UserMenu from './userMenu';
 
-interface IUser {
-  username: String | undefined;
-  id: Number | undefined;
-  role_id: Number | undefined;
-}
+export type User = {
+  id: number;
+  name: string;
+  secret: string;
+  roleId: number;
+} | null;
 
+export default function AdminUserBadge({ user }: { user: User }) {
 export default function (user: IUser) {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  if (!user) return null;
 
   return (
     <>
