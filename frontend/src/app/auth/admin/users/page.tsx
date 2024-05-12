@@ -9,8 +9,6 @@ export default async function Page() {
   await ensureLoggedIn();
 
   return (
-    <div className='min-h-full'>
-      <AdminPageHeader />
-    </div>
+    <></>
   );
 }
