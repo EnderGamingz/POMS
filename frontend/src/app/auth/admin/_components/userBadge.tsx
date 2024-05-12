@@ -4,7 +4,7 @@
 'use client';
 import { user } from '@prisma/client';
 import { useState } from 'react';
-import AdminUserMenu from './AdminUserMenu';
+import UserMenu from './userMenu';
 
 interface IUser {
   username: String | undefined;
@@ -12,7 +12,7 @@ interface IUser {
   role_id: Number | undefined;
 }
 
-export default function AdminUserBadge(user: IUser) {
+export default function (user: IUser) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -25,7 +25,7 @@ export default function AdminUserBadge(user: IUser) {
         </p>
         {menuOpen && (
           <div>
-            <AdminUserMenu />
+            <UserMenu />
           </div>
         )}
       </div>

@@ -2,13 +2,13 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-import path from 'path';
-import { text } from 'stream/consumers';
 
-export default function AdminNav() {
+
+export default function () {
   const nav = [
-    { text: 'Users', path: '/users' },
-    { text: 'Services', path: 'Services' },
+    { text: 'Home', path: '/auth/admin' },
+    { text: 'Users', path: '/auth/admin/users' },
+    { text: 'Services', path: '/auth/admin/services' },
   ];
 
   return (
