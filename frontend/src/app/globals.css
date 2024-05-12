@@ -23,3 +23,10 @@ body {
     text-wrap: balance;
   }
 }
+
+/*
+this class makes the outage collection log display look kida good
+*/
+.outageDataCollectionLogRow {
+  grid-template-columns: 4rem auto auto 5rem 8rem ;
+}
