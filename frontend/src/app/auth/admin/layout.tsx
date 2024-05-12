@@ -4,8 +4,8 @@
 
 import { ensureLoggedIn, getSessionData } from '@/lib/session';
 import client from '@prisma/prismadb';
-import AdminNav from './_components/AdminNav';
-import AdminUserBadge from './_components/AdminUserBadge';
+import Nav from './_components/nav';
+import UserBadge from './_components/userBadge';
 import { ReactNode } from 'react';
 
 export default async function Layout({ children }: { children: ReactNode }) {
@@ -18,8 +18,8 @@ export default async function Layout({ children }: { children: ReactNode }) {
   return (
     <div className='min-h-full'>
       <header className='flex h-12 items-center justify-between bg-gray-900 px-1'>
-        <AdminNav />
-        <AdminUserBadge user={user} />
+        <Nav />
+        <UserBadge user={user} />
       </header>
       {children}
     </div>

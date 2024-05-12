@@ -12,8 +12,7 @@ export type User = {
   roleId: number;
 } | null;
 
-export default function AdminUserBadge({ user }: { user: User }) {
-export default function (user: IUser) {
+export default function userBadge({ user }: { user: User }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   if (!user) return null;
@@ -24,7 +23,7 @@ export default function (user: IUser) {
         <p
           className='user-badge rounded-md border-2 border-green-300 bg-green-700 px-2 py-1 text-green-300 hover:cursor-pointer'
           onClick={() => setMenuOpen(!menuOpen)}>
-          {user.username}
+          {user.name}
         </p>
         {menuOpen && (
           <div>

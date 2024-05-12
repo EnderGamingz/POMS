@@ -2,7 +2,6 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-
 import Link from 'next/link';
 
 const navItems = [
@@ -18,7 +17,6 @@ export default function () {
     { text: 'Services', path: '/auth/admin/services' },
   ];
 
-export default function AdminNav() {
   return (
     <nav className='m-h-ful'>
       {navItems.map(item => (
