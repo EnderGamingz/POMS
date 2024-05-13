@@ -27,10 +27,11 @@ model incidents {
 }
 
 model service {
-  id        Int         @id @default(autoincrement())
-  name      String
-  token     String      @unique
-  incidents incidents[]
+  id                  Int                   @id @default(autoincrement())
+  name                String
+  token               String                @unique
+  incidents           incidents[]
+  outageDataCollectionLoggs outageDataCollectionLog[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -48,4 +49,12 @@ model user {
   secret String
   role   role   @relation(fields: [roleId], references: [id])
   roleId Int
+}
+
+model outageDataCollectionLog {
+  id        Int      @id @default(autoincrement())
+  time      DateTime @default(now())
+  info      String
+  service   service  @relation(fields: [serviceId], references: [id])
+  serviceId Int
 }

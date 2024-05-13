@@ -10,7 +10,13 @@ const navItems = [
   { text: 'Services', path: '/auth/admin/services' },
 ];
 
-export default function AdminNav() {
+export default function () {
+  const nav = [
+    { text: 'Home', path: '/auth/admin' },
+    { text: 'Users', path: '/auth/admin/users' },
+    { text: 'Services', path: '/auth/admin/services' },
+  ];
+
   return (
     <nav className='m-h-ful'>
       {navItems.map(item => (

@@ -2,6 +2,13 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-export default function Page() {
-  return <div>User Page</div>;
+import { ensureLoggedIn } from '@/lib/session';
+import AdminPageHeader from '../_components/pageHeader';
+
+export default async function Page() {
+  await ensureLoggedIn();
+
+  return (
+    <></>
+  );
 }

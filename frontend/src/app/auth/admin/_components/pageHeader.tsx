@@ -2,26 +2,25 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-import { ensureLoggedIn, getSessionData } from '@/lib/session';
+import { getSessionData } from '@/lib/session';
+import Nav from './nav';
 import client from '@prisma/prismadb';
-import Nav from './_components/nav';
-import UserBadge from './_components/userBadge';
-import { ReactNode } from 'react';
+import UserBadge from './userBadge';
 
-export default async function Layout({ children }: { children: ReactNode }) {
-  await ensureLoggedIn();
-
+export default async function () {
   const session = await getSessionData();
   //@ts-ignore
   const user = await client.user.findUnique({ where: { id: session.user_id } });
-
   return (
-    <div className='min-h-full'>
+    <>
       <header className='flex h-12 items-center justify-between bg-gray-900 px-1'>
         <Nav />
-        <UserBadge user={user} />
+        <UserBadge
+          //@ts-ignore
+          id={user?.id}
+          username={user?.name}
+          role_id={user?.roleId}></UserBadge>
       </header>
-      {children}
-    </div>
+    </>
   );
 }
