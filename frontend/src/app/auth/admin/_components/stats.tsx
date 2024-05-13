@@ -13,12 +13,11 @@ export default async function stats() {
 
   return (
     <div className='col-span-6 row-span-1 flex justify-evenly'>
-      <div className='flex flex-col items-center justify-center w-40'>
-
+      <div className='flex w-40 flex-col items-center justify-center'>
         <p className='text-6xl'>{outage_count}</p>
         <p className='text-xs'>Outage Count</p>
       </div>
-      <div className='flex flex-col items-center justify-center w-40'>
+      <div className='flex w-40 flex-col items-center justify-center'>
         <p className='text-6xl'>{user_count}</p>
         <p className='text-xs'>User Count</p>
       </div>
