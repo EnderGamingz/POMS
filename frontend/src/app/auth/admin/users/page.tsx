@@ -3,12 +3,9 @@
 // license that can be found in the LICENSE file.
 
 import { ensureLoggedIn } from '@/lib/session';
-import AdminPageHeader from '../_components/pageHeader';
 
 export default async function Page() {
   await ensureLoggedIn();
 
-  return (
-    <></>
-  );
+  return <></>;
 }

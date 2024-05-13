@@ -18,19 +18,17 @@ export default function userBadge({ user }: { user: User }) {
   if (!user) return null;
 
   return (
-    <>
-      <div>
-        <p
-          className='user-badge rounded-md border-2 border-green-300 bg-green-700 px-2 py-1 text-green-300 hover:cursor-pointer'
-          onClick={() => setMenuOpen(!menuOpen)}>
-          {user.name}
-        </p>
-        {menuOpen && (
-          <div>
-            <UserMenu />
-          </div>
-        )}
-      </div>
-    </>
+    <div>
+      <p
+        className='user-badge rounded-md border-2 border-green-300 bg-green-700 px-2 py-1 text-green-300 hover:cursor-pointer'
+        onClick={() => setMenuOpen(!menuOpen)}>
+        {user.name}
+      </p>
+      {menuOpen && (
+        <div>
+          <UserMenu />
+        </div>
+      )}
+    </div>
   );
 }
