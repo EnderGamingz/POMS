@@ -27,10 +27,10 @@ model incidents {
 }
 
 model service {
-  id                  Int                   @id @default(autoincrement())
-  name                String
-  token               String                @unique
-  incidents           incidents[]
+  id                        Int                       @id @default(autoincrement())
+  name                      String
+  token                     String                    @unique
+  incidents                 incidents[]
   outageDataCollectionLoggs outageDataCollectionLog[]
 
   createdAt DateTime @default(now())
@@ -44,11 +44,12 @@ model role {
 }
 
 model user {
-  id     Int    @id @default(autoincrement())
-  name   String @unique
-  secret String
-  role   role   @relation(fields: [roleId], references: [id])
-  roleId Int
+  id                   Int       @id @default(autoincrement())
+  name                 String    @unique
+  secret               String
+  lastSuccessfullLogin DateTime?
+  role                 role      @relation(fields: [roleId], references: [id])
+  roleId               Int
 }
 
 model outageDataCollectionLog {
