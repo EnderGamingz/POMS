@@ -1,33 +1,44 @@
 // Copyright 2024 Johannes Thorén. All rights reserved.
 // Use of this source code is governed by a BSD-style
-
-import { role } from '@prisma/client';
-
 // license that can be found in the LICENSE file.
-export type User = {
-  id: number;
-  name: string;
-  secret: string;
-  roleId: number;
-  lastSuccessfullLogin: Date | null;
-  role: role;
-} | null;
-export default async function userCard({ user }: { user: User }) {
+
+import { UserWithRole } from '@/app/auth/admin/users/page';
+import { HashtagIcon, UsersIcon } from '@heroicons/react/24/solid';
+
+export default async function userCard({ user }: { user: UserWithRole }) {
   return (
     <>
-      <div className='px-2 py-2'>
-        <p className='text-xl'>
-        {user?.id} • {user?.name} • {user?.role.name}
+      <div className='flex flex-col items-start gap-1 rounded-md bg-gray-50 p-3 shadow-sm'>
+        <div
+          className={
+            'flex w-full flex-col items-center justify-between sm:flex-row'
+          }>
+          <h2 className={'flex items-center gap-3 text-2xl'}>
+            <UsersIcon className={'h-5 w-5 text-indigo-400'} />
+            {user.name}
+          </h2>
+          <div
+            className={
+              'rounded-full bg-indigo-200 px-3 outline outline-1 outline-indigo-500'
+            }>
+            {user.role.name}
+          </div>
+        </div>
+        <p className={'flex items-center gap-1'}>
+          <HashtagIcon className={'h-4 w-4 text-indigo-400'} /> {user.id}
         </p>
-        <p className='text-xs'>
-          Last login: {user?.lastSuccessfullLogin?.toISOString()}
+        <p className={'text-xs italic'}>
+          Last login:{' '}
+          {user.lastSuccessfulLogin?.toISOString() || 'Not available'}
         </p>
-
-        <div className='[&>*]:w-full [&>*]:bg-slate-300 [&>*]:my-1 [&>*]:rounded-sm [&>*]:text-sm'>
-          <button className='block'>Rename</button>
-          <button className='block'>Set Role</button>
-          <button className='block'>New Secret</button>
-          <button className='block'>Remove</button>
+        <div
+          className={
+            'grid w-full gap-1.5 [&>*]:rounded-md [&>*]:bg-slate-300 [&>*]:p-1 [&>*]:text-sm'
+          }>
+          <button>Rename</button>
+          <button>Set Role</button>
+          <button>New Secret</button>
+          <button>Remove</button>
         </div>
       </div>
     </>

@@ -32,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang='en' className={'h-full'}>
       <body className={cx(inter.className, 'relative flex h-full flex-col')}>
-        <main>{children}</main>
+        <main className={'h-full'}>{children}</main>
       </body>
     </html>
   );

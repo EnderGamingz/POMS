@@ -46,11 +46,11 @@ export default async function handleLogin(formData: FormData) {
     session.user_id = dbRes.id;
     await session.save();
 
-    console.log(dbRes.id)
+    console.log(dbRes.id);
 
     await client.user.update({
       where: { id: dbRes.id },
-      data: { lastSuccessfullLogin: new Date() },
+      data: { lastSuccessfulLogin: new Date() },
     });
 
     redirect('/auth/admin');
